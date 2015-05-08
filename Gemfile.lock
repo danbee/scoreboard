@@ -3,6 +3,7 @@ GEM
   specs:
     dotenv (2.0.1)
     httpclient (2.6.0.1)
+    json (1.8.2)
     multi_json (1.11.0)
     pusher (0.14.4)
       httpclient (~> 2.5)
@@ -23,5 +24,6 @@ PLATFORMS
 
 DEPENDENCIES
   dotenv
+  json
   pusher
   sinatra
