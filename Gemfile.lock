@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    dotenv (2.0.1)
     httpclient (2.6.0.1)
     multi_json (1.11.0)
     pusher (0.14.4)
@@ -21,5 +22,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  dotenv
   pusher
   sinatra
