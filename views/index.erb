@@ -37,6 +37,12 @@
     #player2-score .score { left: 5rem; }
     #player1-score .games { left: 5rem; }
     #player2-score .games { right: 5rem; }
+
+    .controls {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2rem;
+    }
   </style>
 
   <script src="//js.pusher.com/2.2/pusher.min.js"></script>
@@ -57,15 +63,14 @@
       $('#player2-score .games').text(data.two.games);
     }
 
-    reset = function () {
-      resetScores();
-      resetGames();
-      updateScores();
+    resetScores = function () {
+      $.ajax({method: 'PUT',
+              url: '/reset_scores',
+              data: ''});
     }
 
     $(function() {
-      updateScores(scores);
-      $('#reset').on('click', reset);
+      $('#reset').on('click', resetScores);
     })
   </script>
 </head>

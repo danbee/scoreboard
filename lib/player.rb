@@ -14,8 +14,16 @@ class Player
     @score += 1
   end
 
+  def add_game
+    @games += 1
+  end
+
   def undo_point
     @score -= 1
+  end
+
+  def reset_score
+    @score = 0
   end
 
   def attributes

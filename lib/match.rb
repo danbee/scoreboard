@@ -7,6 +7,15 @@ class Match
 
   def add_point(player)
     @players[player].add_point
+    if @players[:one].has_beaten(@players[:two])
+      @players[:one].reset_score
+      @players[:two].reset_score
+      @players[:one].add_game
+    elsif @players[:two].has_beaten(@players[:one])
+      @players[:one].reset_score
+      @players[:two].reset_score
+      @players[:two].add_game
+    end
   end
 
   def scores

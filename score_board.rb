@@ -22,6 +22,11 @@ class ScoreBoard < Sinatra::Base
                           two: @@match.players[:two] }
   end
 
+  put '/reset_scores' do
+    @@match = Match.new(Player.new, Player.new)
+    push_scores
+  end
+
   put '/player1_scores' do
     @@match.add_point(:one)
     push_scores
