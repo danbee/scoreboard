@@ -8,6 +8,10 @@ require 'pusher'
 
 Pusher.url = "http://#{ENV['PUSHER_KEY']}:#{ENV['PUSHER_SECRET']}@api.pusherapp.com/apps/#{ENV['PUSHER_APP']}"
 
+get '/' do
+  erb :index
+end
+
 put '/player1_scores' do
   Pusher['scores'].trigger('player1_scores', {
     message: 'Player 1 scores'

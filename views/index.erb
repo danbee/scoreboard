@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Table Tennis</title>
+  <style>
+    body {
+      background: black;
+      color: white;
+      font-family: "Helvetica Neue", "Arial", sans-serif;
+    }
+    .scores {
+      position: absolute;
+      top: 0; bottom: 2em; left: 0; right: 0;
+      display: flex;
+      flex-direction: row;
+    }
+    .scores div {
+      position: relative;
+      flex-grow: 1;
+    }
+    .scores div .score {
+      position: absolute;
+      bottom: 2rem;
+      font-weight: bold;
+      font-size: 20rem;
+    }
+    .scores div .games {
+      position: absolute;
+      top: 2rem;
+      font-weight: bold;
+      font-size: 5rem;
+    }
+    #player1-score { background: #b00; }
+    #player2-score { background: #00b; }
+    #player1-score .score { right: 5rem; }
+    #player2-score .score { left: 5rem; }
+    #player1-score .games { left: 5rem; }
+    #player2-score .games { right: 5rem; }
+  </style>
+
+  <script src="//js.pusher.com/2.2/pusher.min.js"></script>
+  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+  <script>
+    var pusher = new Pusher('57dc9c12b6e6fa97febb');
+    var channel = pusher.subscribe('scores');
+
+    var scores = { player1: 0, player2: 0 }
+    var games = { player1: 0, player2: 0 }
+
+    channel.bind('player1_scores', function(data) {
+      scores.player1++;
+      updateScores();
+    });
+    channel.bind('player2_scores', function(data) {
+      scores.player2++;
+      updateScores();
+    });
+
+    updateScores = function () {
+      updateDisplay();
+    }
+
+    updateDisplay = function () {
+      $('#player1-score .score').text(scores.player1);
+      $('#player2-score .score').text(scores.player2);
+      $('#player1-score .games').text(games.player1);
+      $('#player2-score .games').text(games.player2);
+    }
+
+    resetScores = function () {
+      scores = { player1: 0, player2: 0 }
+      games = { player1: 0, player2: 0 }
+      updateScores();
+    }
+
+    $(function() {
+      updateScores(scores);
+      $('#reset').on('click', resetScores);
+    })
+  </script>
+</head>
+<body>
+  <div class="scores">
+    <div id="player1-score">
+      <span class="score"></span>
+      <span class="games"></span>
+    </div>
+    <div id="player2-score">
+      <span class="score"></span>
+      <span class="games"></span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="reset">Reset</button>
+  </div>
+</body>
+</html>
