@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.2'
 
-gem 'dotenv', group: :development
+gem 'dotenv'
 
 gem 'json'
 
