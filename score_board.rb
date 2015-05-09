@@ -15,25 +15,25 @@ Pusher.url = "http://#{ENV['PUSHER_KEY']}:#{ENV['PUSHER_SECRET']}@api.pusherapp.
 
 class ScoreBoard < Sinatra::Base
 
-  @@match = Match.new(Player.new, Player.new)
+  @@match = Match.new
 
   get '/' do
-    erb :index, locals: { one: @@match.players[:one],
-                          two: @@match.players[:two] }
+    erb :index, locals: { scores: @@match.scores }
   end
 
   put '/reset_scores' do
-    @@match = Match.new(Player.new, Player.new)
+    @@match.reset_scores
+    @@match.reset_games
     push_scores
   end
 
-  put '/player1_scores' do
-    @@match.add_point(:one)
+  put '/red_scores' do
+    @@match.add_point(:red)
     push_scores
   end
 
-  put '/player2_scores' do
-    @@match.add_point(:two)
+  put '/blue_scores' do
+    @@match.add_point(:blue)
     push_scores
   end
 

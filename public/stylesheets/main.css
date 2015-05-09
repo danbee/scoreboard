@@ -1,0 +1,43 @@
+body {
+  background: black;
+  color: white;
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+}
+.scores {
+  position: absolute;
+  top: 0; bottom: 2em; left: 0; right: 0;
+  display: flex;
+  flex-direction: row;
+}
+.scores div { position: relative; flex-grow: 1; }
+.scores div .score {
+  position: absolute;
+  bottom: 2rem;
+  font-weight: bold;
+  font-size: 20rem;
+}
+.scores div .games {
+  position: absolute;
+  top: 2rem;
+  font-weight: bold;
+  font-size: 5rem;
+}
+.scores div .name {
+  position: absolute;
+  top: 3rem;
+  font-size: 2rem;
+}
+#red-score { background: #b00; }
+#blue-score { background: #00b; }
+#red-score .score { right: 5rem; }
+#blue-score .score { left: 5rem; }
+#red-score .games { left: 5rem; }
+#blue-score .games { right: 5rem; }
+#red-score .name { right: 5rem; }
+#blue-score .name { left: 5rem; }
+
+.controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2rem;
+}

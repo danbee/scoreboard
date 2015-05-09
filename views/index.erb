@@ -3,91 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <title>Table Tennis</title>
-  <style>
-    body {
-      background: black;
-      color: white;
-      font-family: "Helvetica Neue", "Arial", sans-serif;
-    }
-    .scores {
-      position: absolute;
-      top: 0; bottom: 2em; left: 0; right: 0;
-      display: flex;
-      flex-direction: row;
-    }
-    .scores div {
-      position: relative;
-      flex-grow: 1;
-    }
-    .scores div .score {
-      position: absolute;
-      bottom: 2rem;
-      font-weight: bold;
-      font-size: 20rem;
-    }
-    .scores div .games {
-      position: absolute;
-      top: 2rem;
-      font-weight: bold;
-      font-size: 5rem;
-    }
-    #player1-score { background: #b00; }
-    #player2-score { background: #00b; }
-    #player1-score .score { right: 5rem; }
-    #player2-score .score { left: 5rem; }
-    #player1-score .games { left: 5rem; }
-    #player2-score .games { right: 5rem; }
+  <link rel="stylesheet" href="/stylesheets/main.css">
 
-    .controls {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2rem;
-    }
-  </style>
-
-  <script src="//js.pusher.com/2.2/pusher.min.js"></script>
-  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-
-  <script>
-    var pusher = new Pusher('57dc9c12b6e6fa97febb');
-    var channel = pusher.subscribe('scores');
-
-    channel.bind('update_scores', function(data) {
-      updateDisplay(data);
-    });
-
-    updateDisplay = function (data) {
-      $('#player1-score .score').text(data.one.score);
-      $('#player2-score .score').text(data.two.score);
-      $('#player1-score .games').text(data.one.games);
-      $('#player2-score .games').text(data.two.games);
-    }
-
-    resetScores = function () {
-      $.ajax({method: 'PUT',
-              url: '/reset_scores',
-              data: ''});
-    }
-
-    $(function() {
-      $('#reset').on('click', resetScores);
-    })
-  </script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pusher/2.2.4/pusher.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 </head>
 <body>
-  <div class="scores">
-    <div id="player1-score">
-      <span class="score"><%= one.score %></span>
-      <span class="games"><%= one.games %></span>
-    </div>
-    <div id="player2-score">
-      <span class="score"><%= two.score %></span>
-      <span class="games"><%= two.games %></span>
-    </div>
-  </div>
+  <scores></scores>
+
+  <script src="/tags/scores.tag" type="riot/tag"></script>
+  <script src="/javascripts/main.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/riot/2.0.15/riot+compiler.min.js"></script>
 
   <div class="controls">
     <button id="reset">Reset</button>
   </div>
+
+  <script>
+    riot.mount('scores', { players: <%= scores.to_json %> })
+  </script>
+
 </body>
 </html>

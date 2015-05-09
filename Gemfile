@@ -6,3 +6,5 @@ gem 'json'
 
 gem 'sinatra'
 gem 'pusher'
+
+gem 'puma'

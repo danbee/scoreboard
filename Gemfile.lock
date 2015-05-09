@@ -5,6 +5,8 @@ GEM
     httpclient (2.6.0.1)
     json (1.8.2)
     multi_json (1.11.0)
+    puma (2.11.2)
+      rack (>= 1.1, < 2.0)
     pusher (0.14.4)
       httpclient (~> 2.5)
       multi_json (~> 1.0)
@@ -25,5 +27,6 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   json
+  puma
   pusher
   sinatra

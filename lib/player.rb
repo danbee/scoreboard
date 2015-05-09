@@ -1,7 +1,8 @@
 class Player
-  attr_reader :score, :games
+  attr_reader :score, :games, :name
 
-  def initialize
+  def initialize(name)
+    @name = name
     @score = 0
     @games = 0
   end
@@ -26,7 +27,13 @@ class Player
     @score = 0
   end
 
+  def reset_games
+    @games = 0
+  end
+
   def attributes
-    { score: @score, games: @games }
+    { name: @name,
+      score: @score,
+      games: @games }
   end
 end
