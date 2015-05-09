@@ -8,3 +8,4 @@ gem 'sinatra'
 gem 'pusher'
 
 gem 'puma'
+gem 'foreman'
