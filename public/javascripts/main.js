@@ -1,4 +1,4 @@
-var pusher = new Pusher('57dc9c12b6e6fa97febb');
+var pusher = new Pusher(pusherKey);
 var channel = pusher.subscribe('scores');
 
 resetScores = function () {
