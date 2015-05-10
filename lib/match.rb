@@ -4,28 +4,28 @@ class Match
   end
 
   def add_point(colour)
-    players[colour].add_point
+    players[colour].score.increment
     if @one.has_beaten(@two)
       reset_scores
-      @one.add_game
+      @one.games.increment
     elsif @two.has_beaten(@one)
       reset_scores
-      @two.add_game
+      @two.games.increment
     end
   end
 
   def reset_scores
-    @one.reset_score
-    @two.reset_score
+    @one.score.reset
+    @two.score.reset
   end
 
   def reset_games
-    @one.reset_games
-    @two.reset_games
+    @one.games.reset
+    @two.games.reset
   end
 
   def total_games
-    @one.games + @two.games
+    @one.games.value + @two.games.value
   end
 
   def players

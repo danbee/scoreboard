@@ -8,6 +8,13 @@ require 'json'
 require 'sinatra'
 require 'pusher'
 
+require 'redis'
+require 'redis-objects'
+
+require 'connection_pool'
+redis_url = ENV['REDISCLOUD_URL']
+Redis::Objects.redis = ConnectionPool.new(size: 5, timeout: 5) { Redis.new(url: redis_url) }
+
 require './lib/match'
 require './lib/player'
 
