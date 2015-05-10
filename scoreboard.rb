@@ -20,7 +20,7 @@ require './lib/player'
 
 Pusher.url = "http://#{ENV['PUSHER_KEY']}:#{ENV['PUSHER_SECRET']}@api.pusherapp.com/apps/#{ENV['PUSHER_APP']}"
 
-class ScoreBoard < Sinatra::Base
+class Scoreboard < Sinatra::Base
 
   @@match = Match.new
 

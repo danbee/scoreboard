@@ -1,6 +1,6 @@
 require 'bundler'
 
 Bundler.setup
-require './score_board'
+require './scoreboard'
 
-run ScoreBoard
+run Scoreboard
