@@ -6,10 +6,12 @@ body {
 .scores {
   position: absolute;
   top: 0; bottom: 2em; left: 0; right: 0;
+  display: -webkit-flex;
   display: flex;
+  -webkit-flex-direction: row;
   flex-direction: row;
 }
-.scores div { position: relative; flex-grow: 1; }
+.scores div { position: relative; -webkit-flex-grow: 1; }
 .scores div .score {
   position: absolute;
   bottom: 2rem;
