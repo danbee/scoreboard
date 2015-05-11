@@ -1,11 +1,15 @@
 class Player
   include Redis::Objects
 
+  attr_reader :id
+
+  value :name
   counter :score
   counter :games
 
-  def initialize(name)
-    @name = name
+  def initialize(id, attr = {})
+    @id = id
+    self.name = attr[:name]
   end
 
   def has_beaten(player)
@@ -13,12 +17,8 @@ class Player
   end
 
   def attributes
-    { name: @name,
+    { name: self.name.value,
       score: self.score.value,
       games: self.games.value }
-  end
-
-  def id
-    @name.downcase.gsub(/[^a-z]/, '-')
   end
 end

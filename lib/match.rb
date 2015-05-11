@@ -1,6 +1,7 @@
 class Match
   def initialize
-    @one, @two = Player.new('Player One'), Player.new('Player Two')
+    @one, @two = Player.new(:one, name: 'Player One'),
+                 Player.new(:two, name: 'Player Two')
   end
 
   def add_point(colour)
@@ -12,6 +13,11 @@ class Match
       reset_scores
       @two.games.increment
     end
+  end
+
+  def undo_point(colour)
+    player = players[colour]
+    player.score.decrement if player.score.value > 0
   end
 
   def reset_scores

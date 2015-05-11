@@ -13,6 +13,7 @@
   </div>
 
   <script>
+
     this.players = opts.players;
 
     channel.bind('update_scores', function(data) {
