@@ -7,9 +7,8 @@ class Player
   counter :score
   counter :games
 
-  def initialize(id, attr = {})
+  def initialize(id)
     @id = id
-    self.name = attr[:name]
   end
 
   def has_beaten(player)

@@ -1,7 +1,9 @@
 class Match
-  def initialize
-    @one, @two = Player.new(:one, name: 'Player One'),
-                 Player.new(:two, name: 'Player Two')
+  def initialize(name_one = nil, name_two = nil)
+    @one, @two = Player.new(:one),
+                 Player.new(:two)
+    @one.name = name_one unless name_one.nil?
+    @two.name = name_two unless name_two.nil?
   end
 
   def add_point(colour)

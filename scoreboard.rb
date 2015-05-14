@@ -26,6 +26,14 @@ class Scoreboard < Sinatra::Base
     erb :index, locals: { scores: match.scores }
   end
 
+  post '/new_game' do
+    @match = Match.new(params[:one], params[:two])
+    @match.reset_scores
+    @match.reset_games
+    push_scores
+    JSON match.scores
+  end
+
   put '/reset_scores' do
     match.reset_scores
     match.reset_games
@@ -63,7 +71,7 @@ class Scoreboard < Sinatra::Base
   private
 
   def match
-    Match.new
+    @match ||= Match.new
   end
 
 end
