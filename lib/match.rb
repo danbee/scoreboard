@@ -38,9 +38,9 @@ class Match
 
   def players
     if total_games.even?
-      { red: @one, blue: @two }
-    else
       { red: @two, blue: @one }
+    else
+      { red: @one, blue: @two }
     end
   end
 
