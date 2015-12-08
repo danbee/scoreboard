@@ -27,7 +27,13 @@ class Match
 
   def set_serve
     total_points = @one.score.value + @two.score.value
-    initial_server = (total_points / 2).even?
+
+    if @one.score.value >= 10 && @two.score.value >= 10
+      initial_server = total_points.even?
+    else
+      initial_server = (total_points / 2).even?
+    end
+
     case self.initial_serve.value
     when 'blue'
       self.serve = initial_server ? :blue : :red
