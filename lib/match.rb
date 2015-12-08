@@ -1,4 +1,9 @@
 class Match
+  include Redis::Objects
+
+  value :initial_serve
+  value :serve
+
   def initialize(name_one = nil, name_two = nil)
     @one, @two = Player.new(:one),
                  Player.new(:two)
@@ -10,16 +15,48 @@ class Match
     players[colour].score.increment
     if @one.has_beaten(@two)
       reset_scores
+      swap_initial_serve
       @one.games.increment
     elsif @two.has_beaten(@one)
       reset_scores
+      swap_initial_serve
       @two.games.increment
+    end
+    set_serve
+  end
+
+  def set_serve
+    total_points = @one.score.value + @two.score.value
+    initial_server = (total_points / 2).even?
+    case self.initial_serve.value
+    when 'blue'
+      self.serve = initial_server ? :blue : :red
+    when 'red'
+      self.serve = initial_server ? :red : :blue
+    end
+  end
+
+  def swap_initial_serve
+    case self.initial_serve.value
+    when 'red'
+      set_initial_serve(:blue)
+    when 'blue'
+      set_initial_serve(:red)
     end
   end
 
   def undo_point(colour)
     player = players[colour]
-    player.score.decrement if player.score.value > 0
+    if player.score.value > 0
+      player.score.decrement
+    elsif no_scores?
+      set_initial_serve(colour)
+    end
+  end
+
+  def set_initial_serve(colour)
+    self.initial_serve = colour
+    self.serve = colour
   end
 
   def reset_scores
@@ -30,6 +67,7 @@ class Match
   def reset_games
     @one.games.reset
     @two.games.reset
+    set_initial_serve(nil)
   end
 
   def total_games
@@ -45,7 +83,16 @@ class Match
   end
 
   def scores
-    { red: players[:red].attributes,
-      blue: players[:blue].attributes }
+    { red: players[:red].attributes.merge(serve: self.serve == 'red'),
+      blue: players[:blue].attributes.merge(serve: self.serve == 'blue') }
+  end
+
+  def no_scores?
+    @one.score == 0 && @two.score == 0
+  end
+
+  # This is required for Redis
+  def id
+    1
   end
 end

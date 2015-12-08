@@ -36,6 +36,16 @@ body {
   top: 3rem;
   font-size: 2rem;
 }
+.scores div .serve {
+  position: absolute;
+  top: 9rem;
+}
+.scores div .serve img {
+  display: none;
+}
+.scores div .serve img.show {
+  display: block;
+}
 #red-score { background: #b00; }
 #blue-score { background: #00b; }
 #red-score .score { right: 5rem; }
@@ -44,6 +54,8 @@ body {
 #blue-score .games { right: 5rem; }
 #red-score .name { right: 5rem; }
 #blue-score .name { left: 5rem; }
+#red-score .serve { right: 5rem; }
+#blue-score .serve { left: 5rem; }
 
 .controls {
   position: absolute;

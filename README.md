@@ -1,5 +1,4 @@
-Table Tennis Score Board
-=======================
+# Table Tennis Score Board
 
 Implements a table tennis scoreboard which can be updated by PUTing to
 particular URL's. This was part of a hack day project that involved buttons
@@ -13,8 +12,7 @@ The back end is Sinatra and the front end is powered by Riot.js. Redis is used
 for data persistence. Pusher is used for communication between the back end and
 the front.
 
-Instructions
-------------
+## Instructions
 
 Install the bundle:
 
@@ -27,3 +25,7 @@ Run the server:
 ```sh
 $ bundle exec foreman start
 ```
+
+## Credits
+
+Ping Pong Paddle icon by Anbileru Adaleru from the Noun Project

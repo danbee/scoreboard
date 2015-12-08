@@ -73,5 +73,4 @@ class Scoreboard < Sinatra::Base
   def match
     @match ||= Match.new
   end
-
 end

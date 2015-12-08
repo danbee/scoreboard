@@ -40,3 +40,6 @@ DEPENDENCIES
   pusher
   redis-objects
   sinatra
+
+BUNDLED WITH
+   1.10.6
