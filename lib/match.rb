@@ -15,11 +15,9 @@ class Match
     players[colour].score.increment
     if @one.has_beaten(@two)
       reset_scores
-      swap_initial_serve
       @one.games.increment
     elsif @two.has_beaten(@one)
       reset_scores
-      swap_initial_serve
       @two.games.increment
     end
     set_serve
@@ -39,15 +37,6 @@ class Match
       self.serve = initial_server ? :blue : :red
     when 'red'
       self.serve = initial_server ? :red : :blue
-    end
-  end
-
-  def swap_initial_serve
-    case self.initial_serve.value
-    when 'red'
-      set_initial_serve(:blue)
-    when 'blue'
-      set_initial_serve(:red)
     end
   end
 
