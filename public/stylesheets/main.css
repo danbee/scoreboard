@@ -5,7 +5,7 @@ body {
 }
 .scores {
   position: absolute;
-  top: 0; bottom: 2em; left: 0; right: 0;
+  top: 0; bottom: 0; left: 0; right: 0;
   display: -webkit-flex;
   display: -moz-flex;
   display: flex;
@@ -21,7 +21,7 @@ body {
 }
 .scores div .score {
   position: absolute;
-  bottom: 2rem;
+  bottom: 6rem;
   font-weight: bold;
   font-size: 20rem;
 }
@@ -60,5 +60,17 @@ body {
 .controls {
   position: absolute;
   bottom: 0; left: 0; right: 0;
-  height: 2rem;
+  text-align: center;
+}
+
+.controls button#reset {
+  border-style: solid;
+  border-width: 2px 2px 0;
+  border-color: rgba(255, 255, 255, 0.6);
+  padding: 1rem 4rem;
+  /* background: #47962D; */
+  background: transparent;
+  color: white;
+  font-size: 2rem;
+  border-radius: 0.5em 0.5em 0 0;
 }
