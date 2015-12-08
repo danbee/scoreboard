@@ -47,6 +47,7 @@ class Match
     elsif no_scores?
       set_initial_serve(colour)
     end
+    set_serve
   end
 
   def set_initial_serve(colour)
