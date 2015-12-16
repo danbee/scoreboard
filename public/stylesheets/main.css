@@ -59,18 +59,18 @@ body {
 
 .controls {
   position: absolute;
-  bottom: 0; left: 0; right: 0;
+  bottom: 2em; left: 0; right: 0;
   text-align: center;
 }
 
 .controls button#reset {
   border-style: solid;
-  border-width: 2px 2px 0;
+  border-width: 2px;
   border-color: rgba(255, 255, 255, 0.6);
   padding: 1rem 4rem;
   /* background: #47962D; */
-  background: transparent;
+  background-color: rgba(0, 0, 0, 0.05);
   color: white;
   font-size: 2rem;
-  border-radius: 0.5em 0.5em 0 0;
+  border-radius: 0.5em;
 }
