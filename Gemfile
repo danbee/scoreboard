@@ -12,4 +12,3 @@ gem 'redis-objects'
 gem 'connection_pool'
 
 gem 'puma'
-gem 'foreman', group: :development

@@ -14,16 +14,17 @@ the front.
 
 ## Instructions
 
-Install the bundle:
+Install the bundle and foreman:
 
 ```sh
 $ bundle install
+$ gem install foreman
 ```
 
 Run the server:
 
 ```sh
-$ bundle exec foreman start
+$ foreman start
 ```
 
 ## Credits
